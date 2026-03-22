@@ -1,6 +1,8 @@
 from pydantic import BaseModel, Field
 from agents import Agent
 
+from openai_compat import AGENT_MODEL
+
 INSTRUCTIONS = (
     "You are a senior researcher tasked with writing a cohesive report for a research query. "
     "You will be provided with the original query, and some initial research done by a research assistant.\n"
@@ -22,6 +24,6 @@ class ReportData(BaseModel):
 writer_agent = Agent(
     name="WriterAgent",
     instructions=INSTRUCTIONS,
-    model="gpt-4o-mini",
+    model=AGENT_MODEL,
     output_type=ReportData,
 )

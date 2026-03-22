@@ -1,7 +1,9 @@
 from pydantic import BaseModel, Field
 from agents import Agent
 
-HOW_MANY_SEARCHES = 5
+from openai_compat import AGENT_MODEL
+
+HOW_MANY_SEARCHES = 3
 
 INSTRUCTIONS = f"You are a helpful research assistant. Given a query, come up with a set of web searches \
 to perform to best answer the query. Output {HOW_MANY_SEARCHES} terms to query for."
@@ -18,6 +20,6 @@ class WebSearchPlan(BaseModel):
 planner_agent = Agent(
     name="PlannerAgent",
     instructions=INSTRUCTIONS,
-    model="gpt-4o-mini",
+    model=AGENT_MODEL,
     output_type=WebSearchPlan,
 )

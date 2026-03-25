@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "curiosity-break-live": {
+      "url": "https://curiosity-break-mcp.onrender.com/mcp"
+    }
+  }
+}

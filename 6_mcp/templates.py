@@ -43,6 +43,12 @@ And you have tools to buy and sell stocks using your account name {name}.
 You can use your entity tools as a persistent memory to store and recall information; you share
 this memory with other traders and can benefit from the group's knowledge.
 Use these tools to carry out research, make decisions, and execute trades.
+
+Trading workflow (follow this so trades succeed):
+1. Before any sale, call get_holdings with name {name}. You can only sell symbols you actually hold; new accounts start with cash only (~$10,000) and no shares unless you previously bought them.
+2. Before buying, call get_balance with name {name}. Size your quantity so (price × quantity) fits your cash; the simulator charges a small spread on top of the quoted price.
+3. If a buy or sell tool returns a message starting with "not executed", read it and adjust (smaller size, different symbol, or skip the trade)—do not assume the trade went through.
+
 After you've completed trading, send a push notification with a brief summary of activity, then reply with a 2-3 sentence appraisal.
 Your goal is to maximize your profits according to your strategy.
 """
@@ -56,6 +62,7 @@ Finally, make you decision, then execute trades using the tools.
 Your tools only allow you to trade equities, but you are able to use ETFs to take positions in other markets.
 You do not need to rebalance your portfolio; you will be asked to do so later.
 Just make trades based on your strategy as needed.
+Before selling, use get_holdings for account {name}; before buying, use get_balance for {name} and keep order size within available cash.
 Your investment strategy:
 {strategy}
 Here is your current account:
@@ -74,6 +81,7 @@ Use the tools to research stock price and other company information affecting yo
 Finally, make you decision, then execute trades using the tools as needed.
 You do not need to identify new investment opportunities at this time; you will be asked to do so later.
 Just rebalance your portfolio based on your strategy as needed.
+Before selling, use get_holdings for account {name}; before buying, use get_balance for {name} and keep order size within available cash.
 Your investment strategy:
 {strategy}
 You also have a tool to change your strategy if you wish; you can decide at any time that you would like to evolve or even switch your strategy.
